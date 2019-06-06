@@ -1,0 +1,28 @@
+<template>
+    <div id='listing'>
+        <table border="1">
+            <tr v-for="nome of names" :key="nome.id">
+                <td>{{ nome.name }}</td>
+            </tr>
+        </table>
+    </div>
+</template>
+<script>
+    import Name from './services/name'
+
+    export default {
+
+        data() {
+            return {
+                names: []
+            }
+        },
+
+        mounted() {
+            Name.listing().then(resposta => {
+                console.log("oi")
+                this.name = resposta.data
+            })
+        }
+    }
+</script>
